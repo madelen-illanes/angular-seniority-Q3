@@ -16,6 +16,3 @@ Estándar de pruebas unitarias: https://pichincha.atlassian.net/wiki/spaces/CFE/
 
 
 Debe utilizar una arquitectura similar al estándar propuesto: https://pichincha.atlassian.net/wiki/spaces/CFE/pages/2539716710/Arquitectura+-+Angular
-
-
-Debe tener un coverage mínimo de 75%.
