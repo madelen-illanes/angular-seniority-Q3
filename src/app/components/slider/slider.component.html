@@ -1,5 +1,42 @@
 <label> {{ label }}</label>
+<p>
+  <input type="text" placeholder="Buscar por nombre" (keyup)="filtrar()" [(ngModel)]="nombre">
+</p>
 <div class="input-container">
   <input type="range" [(ngModel)]="field" data-testid="input"/>
 <a style="font-size: 1.5rem; width: 10%; padding-left: 5%;">{{field}}</a>
 </div>
+<table>
+<tr *ngFor="let item of players">
+  <div class="color-fondo">
+  <td>
+    <img src= {{item.image}} alt="">
+    <p>{{item.firstName}} {{item.lastName}}</p>
+    <tr>
+      <td>
+        <p>Ataque</p>
+        <p>{{item.attack}}</p>
+      </td>
+      <td>
+        <p>Defensa</p>
+        <p>{{item.defense}}</p>
+      </td>
+      <td>
+        <p>Skills</p>
+        <p>{{item.skills}}</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <img src="../assets/delete-icon.svg" />
+      </td>
+      <td>
+        <img src="../assets/edit-icon.svg" />
+      </td>
+    </tr>
+  </td>
+</div>
+</tr>
+
+</table>
+

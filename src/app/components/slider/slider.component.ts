@@ -1,5 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { PlayersService } from 'src/app/_services/player/players.service';
+import { Player } from '../../_models/players';
+
 
 @Component({
   selector: 'app-slider',
@@ -17,12 +20,30 @@ export class SliderComponent implements ControlValueAccessor {
   @Input()
   public label: string = '';
   field = '0';
+  players: Player[] = [];
+  nombre!: string;
 
-  constructor() {}
 
+  constructor(private playerServices: PlayersService) {}
+
+  
   onChange: any = () => {};
   onTouch: any = () => {};
+  
+  ngOnInit(): void {
+   this.playerServices.listarTodo().subscribe(data =>{
+    
+    this.players = data
+   });
+    
+  }
 
+  filtrar(){
+    
+    this.playerServices.buscarPorNombre(this.nombre).subscribe(data =>{
+      this.players = data
+    })
+  } 
   // sets the value used by the ngModel of the element
   set value(val: string) {
     this.field = val;
@@ -44,4 +65,7 @@ export class SliderComponent implements ControlValueAccessor {
   registerOnTouched(onTouched: Function) {
     this.onTouch = onTouched;
   }
+
+  
+
 }
